@@ -17,8 +17,8 @@ const cookieParser = require('cookie-parser');
 
 //Configurations
 const app = express();
-const CONNECTION_URI ='mongodb://localhost/ecomm';
-// const CONNECTION_URI = process.env.CONNECTION_URI;
+// const CONNECTION_URI ='mongodb://localhost/ecomm';
+const CONNECTION_URI = process.env.CONNECTION_URI;
 const PORT = process.env.PORT || 8080;
 
 
