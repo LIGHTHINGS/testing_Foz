@@ -39,7 +39,7 @@ router.post('/login', (req, res) => {
             res.json({
                 success: false,
                 message: 'wrong credentials, please try again'
-            }) 
+            }).status(400)
         } else if (user) {
             if (await bcrypt.compare(password, user[0].password)) {
                 const accessToken = jwt.sign({email: user[0].email} , process.env.ACCESS_TOKEN_SECRET, { expiresIn: Math.floor(Date.now()/1000) + 60});
@@ -47,12 +47,12 @@ router.post('/login', (req, res) => {
                 res.cookie('jwt', accessToken);
                 res.json({
                     success: true,
-                    token:accessToken});
+                    token:accessToken}).status(200);
             } else {
                 res.json({
                     success: false,
                     message: "Wrong Password, please try again"
-                })
+                }).status(400)
             }
         }
     })
