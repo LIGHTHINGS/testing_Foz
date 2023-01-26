@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
         if (err) res.sendStatus(501);
         if (!user[0]) {
             res.json({
-                status: false,
+                success: false,
                 message: 'wrong credentials, please try again'
             }) 
         } else if (user) {
@@ -45,10 +45,12 @@ router.post('/login', (req, res) => {
                 const accessToken = jwt.sign({email: user[0].email} , process.env.ACCESS_TOKEN_SECRET, { expiresIn: Math.floor(Date.now()/1000) + 60});
                 // req.headers.isAuth = accessToken;
                 res.cookie('jwt', accessToken);
-                res.json(accessToken);
+                res.json({
+                    success: true,
+                    token:accessToken});
             } else {
                 res.json({
-                    status: false,
+                    success: false,
                     message: "Wrong Password, please try again"
                 })
             }
