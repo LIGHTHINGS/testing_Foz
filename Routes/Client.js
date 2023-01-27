@@ -60,8 +60,8 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     res.cookie('jwt', '');
-    res.redirect('/api/login')
-})
+    res.sendStatus(200);
+});
 
 const userLoggedIn = (req, res, next) =>  {
     const token = req.cookies.jwt;
