@@ -47,6 +47,7 @@ router.post('/login', (req, res) => {
                 res.cookie('jwt', accessToken);
                 res.json({
                     success: true,
+                    User: user[0].email,
                     token:accessToken}).status(200);
             } else {
                 res.json({
