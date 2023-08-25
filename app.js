@@ -19,7 +19,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 // const CONNECTION_URI ='mongodb://localhost/ecomm';
 const CONNECTION_URI = process.env.CONNECTION_URI;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 10000;
 
 
 // Middleswares ========
